@@ -9,10 +9,7 @@ using std::vector;
 class solution {
   public:
     vector<int> singleNumber(const vector<int> & nums) {
-        int init = nums[0];
-        auto it = nums.begin();
-        ++it;
-        int acc = std::accumulate(it, nums.end(), init, std::bit_xor<int>());
+        int acc = std::accumulate(nums.begin(), nums.end(), 0, std::bit_xor<int>());
         size_t parbit = findFirstDiffBit(acc);
 
         std::cout << "The first different bit is located at:\n";
@@ -28,12 +25,8 @@ class solution {
         }
 
         vector<int> singles;
-        auto it1 = vec1.begin();
-        ++it1;
-        int res1 = std::accumulate(it1, vec1.end(), vec1[0], std::bit_xor<int>());
-        auto it2 = vec2.begin();
-        ++it2;
-        int res2 = std::accumulate(it2, vec2.end(), vec2[0], std::bit_xor<int>());
+        int res1 = std::accumulate(vec1.begin(), vec1.end(), 0, std::bit_xor<int>());
+        int res2 = std::accumulate(vec2.begin(), vec2.end(), 0, std::bit_xor<int>());
 
         singles.push_back(res1);
         singles.push_back(res2);
